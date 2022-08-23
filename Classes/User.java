@@ -1,2 +1,5 @@
-package PACKAGE_NAME;public class User {
+public class User
+{
+    private String username;
+    private String user_id;
 }

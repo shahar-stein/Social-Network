@@ -1,2 +1,4 @@
-package PACKAGE_NAME;public class Post {
+public class Post
+{
+
 }
