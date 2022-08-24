@@ -12,7 +12,5 @@ public class Main
         String friend_user = myObj.nextLine();
         System.out.println("What do you want to write? ");
         String text = myObj.nextLine();
-
-
     }
 }
