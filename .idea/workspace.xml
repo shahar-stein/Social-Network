@@ -2,10 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3d8f9929-4599-4f13-9cae-d69b3d08f467" name="Changes" comment=".">
-      <change afterPath="$PROJECT_DIR$/Classes/Comment.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Classes/Post.java" beforeDir="false" afterPath="$PROJECT_DIR$/Classes/Post.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Classes/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/Classes/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Classes/Comment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Comment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Classes/Post.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Post.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Classes/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/User.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -40,6 +40,11 @@
     "RunOnceActivity.ShowReadmeOnStart": "true"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="" />
+    </key>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -67,7 +72,13 @@
       <option name="presentableId" value="LOCAL‎00003" />
       <updated>1661269912660</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL‎00004" summary=".">
+      <created>1661351403627</created>
+      <option name="number" value="LOCAL‎00004" />
+      <option name="presentableId" value="LOCAL‎00004" />
+      <updated>1661351403627</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">

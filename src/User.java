@@ -1,14 +1,17 @@
+import java.util.ArrayList;
+import java.util.List;
+
 public class User
 {
     private String username;
     private String user_id;
-    private Post[] posts;
+    private List<Post> posts;
 
-    public User(String username, String user_id, Post[] posts)
+    public User(String username, String user_id, List<Post> posts)
     {
         this.username = username;
         this.user_id = user_id;
-        this.posts = posts;
+        this.posts = new ArrayList<Post>();
     }
 
     public String getUsername()
@@ -31,12 +34,12 @@ public class User
         this.user_id = user_id;
     }
 
-    public Post[] getPosts()
+    public List<Post> getPosts()
     {
         return posts;
     }
 
-    public void setPosts(Post[] posts)
+    public void setPosts(List<Post> posts)
     {
         this.posts = posts;
     }

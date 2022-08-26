@@ -9,9 +9,9 @@ public class Comment
     public Comment(String user_id, String username, String content)
     {
         super();
-        this.user_id=user_id;
-        this.username=username;
-        this.content=content;
+        this.user_id = user_id;
+        this.username = username;
+        this.content = content;
     }
 
     public String getUser_id()
