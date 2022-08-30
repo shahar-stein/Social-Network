@@ -33,11 +33,10 @@ public class Post
 
 //        public Post NewPost()
 //    {
-//        String content = "";
-//        Comment[] comments = new Comment[];
+//        String text = "";
+//        List<comment> comments = new ArrayList<Comment>();
 //        for(int i = 0; i<2; i++)
 //        {
-//            content = this.content;
 //            NewComment(comments);
 //        }
 //        return new Post(content, comments);

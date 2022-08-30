@@ -47,11 +47,9 @@ public class Comment
     public Comment NewComment()
     {
         String user_id = "", username = "", content = "";
-        for(int i = 0; i<3; i++)
+        for(int i = 0; i< 3; i++)
         {
-            user_id = this.user_id;
-            username = this.username;
-            content = this.content;
+
         }
         return new Comment(user_id, username, content);
     }
