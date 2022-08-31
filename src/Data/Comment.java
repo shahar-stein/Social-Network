@@ -1,3 +1,5 @@
+package Data;
+
 import java.util.Scanner;
 
 public class Comment
@@ -44,13 +46,4 @@ public class Comment
         this.content = content;
     }
 
-    public Comment NewComment()
-    {
-        String user_id = "", username = "", content = "";
-        for(int i = 0; i< 3; i++)
-        {
-
-        }
-        return new Comment(user_id, username, content);
-    }
 }

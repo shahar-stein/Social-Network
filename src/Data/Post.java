@@ -1,3 +1,5 @@
+package Data;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -5,10 +7,10 @@ public class Post
 {
     private String text;
     private List<Comment> comments;
-    public Post(String text, Comment comments)
+    public Post(String text)
     {
         this.text = text;
-        this.comments = new ArrayList<Comment>();
+        //this.comments = new ArrayList<Data.Comment>();
     }
 
     public String getText()
@@ -31,14 +33,14 @@ public class Post
         this.comments = comments;
     }
 
-//        public Post NewPost()
+//        public Data.Post NewPost()
 //    {
 //        String text = "";
-//        List<comment> comments = new ArrayList<Comment>();
+//        List<comment> comments = new ArrayList<Data.Comment>();
 //        for(int i = 0; i<2; i++)
 //        {
 //            NewComment(comments);
 //        }
-//        return new Post(content, comments);
+//        return new Data.Post(content, comments);
 //    }
 }
