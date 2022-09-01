@@ -7,7 +7,7 @@ public class Main
 
     public static void main(String[] args)
     {
-        SocialNetwork facebook = new SocialNetwork();
-        facebook.Run();
+        SocialNetwork shaharsapp = new SocialNetwork();
+        shaharsapp.Run();
     }
 }

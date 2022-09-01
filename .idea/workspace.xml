@@ -2,13 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3d8f9929-4599-4f13-9cae-d69b3d08f467" name="Changes" comment=".">
-      <change afterPath="$PROJECT_DIR$/src/Logic/SocialNetwork.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/UI/CommandLineInterface.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Logic/Menu.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Comment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Data/Comment.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Post.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Data/Post.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Data/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/UI/CommandLineInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/UI/CommandLineInterface.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -92,7 +89,13 @@
       <option name="presentableId" value="LOCAL‎00006" />
       <updated>1661880606786</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL‎00007" summary=".">
+      <created>1661962808178</created>
+      <option name="number" value="LOCAL‎00007" />
+      <option name="presentableId" value="LOCAL‎00007" />
+      <updated>1661962808178</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">

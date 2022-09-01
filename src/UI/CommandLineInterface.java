@@ -14,4 +14,8 @@ public class CommandLineInterface
     {
         return myObj.nextLine();
     }
+    public int getIntInputFromUser()
+    {
+        return myObj.nextInt();
+    }
 }
