@@ -13,35 +13,39 @@ public class Menu
 
     public void Run()
     {
+        cli.print("Hello and Welcome to Shahar's App !");
         int choice;
         do
         {
-            int i = 0;
-            cli.print("Hello and Welcome to Shahar's App !");
             cli.print("Choose user:");
-            cli.print(i + " - " + "Add New User");
-            for (i = 1; i <= users.size(); i++) {
-                String username = users.toString();
-                cli.print(i + " - " + username);
+            for (Map.Entry<String, User> userEntry: users.entrySet())
+            {
+                String userName = userEntry.getKey();
+                User userData = userEntry.getValue();
+                //cli.print(userName);
             }
-            cli.print(i++ + " - Exit");
+            cli.print(users.size() + " - Add New User");
             choice = cli.getIntInputFromUser();
-
+            cli.print("0 - EXIT");
             switch (choice)
             {
                 case 0:
-                    cli.print("What user do you like to add ? ");
-                    String username = cli.getInputFromUser();
-                    if(!users.containsKey(username)) {
-                        users.put(username, new User(username));
-                    }
-                    else {
-                        cli.print("User already exists");
-                    }
-                case choice == users.size() + 1:
                     cli.print("Exiting Program...");
                     System.exit(0);
                     break;
+
+                case users.size() + 1:
+                    cli.print("What user do you like to add ? ");
+                    String username = cli.getInputFromUser();
+                    if(!users.containsKey(username))
+                    {
+                        users.put(username, new User(username));
+                    }
+                    else
+                    {
+                        cli.print("User already exists");
+                    }
+
                 default:
                     cli.print("On who's wall do you want to write?  ");
                     String friend_user = cli.getInputFromUser();
