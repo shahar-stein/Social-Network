@@ -18,7 +18,7 @@ public class Menu
         int choice = -1, count = 1;
         do
         {
-            cli.print("Choose user:");
+            cli.print("Choose your user:");
             for (Map.Entry<String, User> userEntry: users.entrySet())
             {
                 String userName = userEntry.getKey();
@@ -62,6 +62,4 @@ public class Menu
         }
         while(choice != users.size() + 1);
     }
-
 }
-
