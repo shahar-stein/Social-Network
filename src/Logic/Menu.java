@@ -10,11 +10,12 @@ public class Menu
 {
     private Map<String, User> users = new HashMap<>();
     private CommandLineInterface cli = new CommandLineInterface();
+    private Map<Integer, String> indexToUser = new HashMap<>(); // Map<int, String> ?
 
     public void Run()
     {
         cli.print("Hello and Welcome to Shahar's App !");
-        int choice;
+        int choice = -1, count = 1;
         do
         {
             cli.print("Choose user:");
@@ -22,11 +23,15 @@ public class Menu
             {
                 String userName = userEntry.getKey();
                 User userData = userEntry.getValue();
-                //cli.print(userName);
+                cli.print(count + ". " + userName);
+                indexToUser.put(count, userName);
+                count++;
             }
-            cli.print(users.size() + " - Add New User");
-            choice = cli.getIntInputFromUser();
+
+            cli.print(users.size() + 1 + " - Add New User");
             cli.print("0 - EXIT");
+            choice = cli.getIntInputFromUser();
+
             switch (choice)
             {
                 case 0:
@@ -48,7 +53,7 @@ public class Menu
 
                 default:
                     cli.print("On who's wall do you want to write?  ");
-                    String friend_user = cli.getInputFromUser();
+                    int friend_user = cli.getIntInputFromUser();
                     cli.print("What do you want to write? ");
                     String text = cli.getInputFromUser();
                     users.get(friend_user).addPost(text);
