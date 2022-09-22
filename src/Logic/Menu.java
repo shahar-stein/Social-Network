@@ -1,5 +1,6 @@
 package Logic;
 
+import Data.Post;
 import Data.User;
 import UI.CommandLineInterface;
 
@@ -36,14 +37,19 @@ public class Menu {
         }
     }
 
-    private void HandleUser(User user) {
+    private void HandleUser(User user, Map<Integer, String> indexToUser) {
         cli.print("On who's wall do you want to write?  ");
-        int friend_user = cli.getIntInputFromUser();
+        int friend_user_num = cli.getIntInputFromUser(0, users.size() + 1);
         cli.print("What do you want to write? ");
         String text = cli.getInputFromUser();
-        users.get(friend_user).addPost(text);
+        String friend_user_name = indexToUser.get(friend_user_num);
+        users.get(friend_user_name).addPost(text);
         //Print all posts
-    }
+        for (Post post : users.get(friend_user_name).getPosts())
+        {
+            cli.print(post.getText());
+        }
+            }
 
     private Map<Integer, String> GetIndices() {
         Map<Integer, String> result = new HashMap<>();
@@ -64,11 +70,11 @@ public class Menu {
             Map<Integer, String> indexToUser = GetIndices();
 
             PrintMenu(indexToUser);
-            choice = cli.getIntInputFromUser();
+            choice = cli.getIntInputFromUser(0, users.size() + 1);
             if (choice >= 1 && choice <= users.size()) {
                 String index = indexToUser.get(choice);
                 User user = users.get(index);
-                HandleUser(user);
+                HandleUser(user, indexToUser);
             } else if (choice == users.size() + 1) {
                 AddUser();
             } else if (choice == 0) {

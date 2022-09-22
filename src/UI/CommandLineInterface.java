@@ -12,10 +12,16 @@ public class CommandLineInterface
 
     public String getInputFromUser()
     {
-        return myObj.nextLine();
+        String response = myObj.next();
+        return response;
     }
-    public int getIntInputFromUser()
+    public int getIntInputFromUser(int min, int max)
     {
-        return myObj.nextInt();
+        int response = myObj.nextInt();
+        while (response < min || response > max)
+        {
+            response = myObj.nextInt();
+        }
+        return response;
     }
 }
