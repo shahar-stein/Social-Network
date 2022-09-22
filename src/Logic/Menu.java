@@ -22,8 +22,8 @@ public class Menu {
     private void PrintMenu(Map<Integer, String> indexToUser) {
         cli.print("Choose your user:");
         PrintUsers(indexToUser);
-        cli.print(users.size() + 1 + " - Add New User");
-        cli.print("0 - EXIT");
+        cli.print(users.size() + 1 + ". - Add New User");
+        cli.print("0. - EXIT");
     }
 
     private void AddUser() {
