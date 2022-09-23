@@ -22,7 +22,7 @@ public class SocialNetwork
             cli.print("What do you want to write? ");
             String text = cli.getInputFromUser();
             if(!users.containsKey(friend_user)) {
-                users.put(friend_user,new User(username));
+//                users.put(friend_user,new User(username));
 
             }
             users.get(friend_user).addPost(text);

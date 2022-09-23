@@ -7,37 +7,64 @@ import UI.CommandLineInterface;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Menu {
+public class Menu
+{
     private Map<String, User> users = new HashMap<>();
     private CommandLineInterface cli = new CommandLineInterface();
 
-    public void PrintUsers(Map<Integer, String> indexToUser) {
-        for (Map.Entry<Integer, String> userEntry : indexToUser.entrySet()) {
+    public void PrintUsers(Map<Integer, String> indexToUser)
+    {
+        for (Map.Entry<Integer, String> userEntry : indexToUser.entrySet())
+        {
             Integer index = userEntry.getKey();
             String username = userEntry.getValue();
             cli.print(index + ". " + username);
         }
     }
+    private void Login()
+    {
+        cli.print("Enter your username: ");
+        String username = cli.getInputFromUser();
+        cli.print("Enter your Password: ");
+        String password = cli.getInputFromUser();
+        User user = new User(username, password);
+        if(users.containsValue(user))
+        {
+            cli.print("Welcome " + username + " :)");
+        }
+        else
+        {
+            cli.print("Try again");
+        }
+    }
 
-    private void PrintMenu(Map<Integer, String> indexToUser) {
+    private void PrintMenu(Map<Integer, String> indexToUser)
+    {
         cli.print("Choose your user:");
         PrintUsers(indexToUser);
         cli.print(users.size() + 1 + ". - Add New User");
         cli.print("0. - EXIT");
     }
 
-    private void AddUser() {
+    private void AddUser()
+    {
         cli.print("What user do you like to add ? ");
         String username = cli.getInputFromUser();
-        if (!users.containsKey(username)) {
-            users.put(username, new User(username));
+        cli.print("Enter password: ");
+        String password = cli.getInputFromUser();
+        if (!users.containsKey(username))
+        {
+            users.put(username, new User(username, password));
 //            indexToUser.put(count, userName);
-        } else {
+        }
+        else
+        {
             cli.print("User already exists");
         }
     }
 
-    private void HandleUser(User user, Map<Integer, String> indexToUser) {
+    private void HandleUser(User user, Map<Integer, String> indexToUser)
+    {
         cli.print("On who's wall do you want to write?  ");
         int friend_user_num = cli.getIntInputFromUser(0, users.size() + 1);
         cli.print("What do you want to write? ");
@@ -49,9 +76,10 @@ public class Menu {
         {
             cli.print(post.getText());
         }
-            }
+    }
 
-    private Map<Integer, String> GetIndices() {
+    private Map<Integer, String> GetIndices()
+    {
         Map<Integer, String> result = new HashMap<>();
         int count = 1;
         for (Map.Entry<String, User> userEntry : users.entrySet()) {
@@ -60,24 +88,31 @@ public class Menu {
         return result;
     }
 
-    public void Run() {
-        users.put("Shahar", new User("Shahar"));
-        users.put("Shay", new User("Shay"));
+    public void Run()
+    {
+        users.put("Shahar", new User("Shahar", "123456"));
+        users.put("Shay", new User("Shay", "123S"));
 
         cli.print("Hello and Welcome to Shahar's App !");
         int choice;
-        while (true) {
+        while (true)
+        {
             Map<Integer, String> indexToUser = GetIndices();
 
             PrintMenu(indexToUser);
             choice = cli.getIntInputFromUser(0, users.size() + 1);
-            if (choice >= 1 && choice <= users.size()) {
+            if (choice >= 1 && choice <= users.size())
+            {
                 String index = indexToUser.get(choice);
                 User user = users.get(index);
                 HandleUser(user, indexToUser);
-            } else if (choice == users.size() + 1) {
+            }
+            else if (choice == users.size() + 1)
+            {
                 AddUser();
-            } else if (choice == 0) {
+            }
+            else if (choice == 0)
+            {
                 cli.print("Exiting Program...");
                 break;
             }
