@@ -47,9 +47,9 @@ public class User
         this.password = password;
     }
 
-    public void addPost(String text)
+    public void addPost(String text, String writer)
     {
-        posts.add(new Post(text));
+        posts.add(new Post(text, writer));
     }
 }
 

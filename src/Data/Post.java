@@ -6,10 +6,12 @@ import java.util.List;
 public class Post
 {
     private String text;
+    private String writer;
     private List<Comment> comments;
-    public Post(String text)
+    public Post(String text, String writer)
     {
         this.text = text;
+        this.writer = writer;
         //this.comments = new ArrayList<Data.Comment>();
     }
 
@@ -21,6 +23,14 @@ public class Post
     public void setText(String text)
     {
         this.text = text;
+    }
+
+    public String getWriter() {
+        return writer;
+    }
+
+    public void setWriter(String writer) {
+        this.writer = writer;
     }
 
     public List<Comment> getComments()

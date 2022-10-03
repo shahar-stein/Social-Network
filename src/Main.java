@@ -1,8 +1,5 @@
-import Data.User;
-import Logic.Menu;
 import Logic.SocialNetwork;
 
-import java.util.*;
 public class Main
 {
 
@@ -10,7 +7,7 @@ public class Main
     {
 //        SocialNetwork shaharsapp = new SocialNetwork();
 //        shaharsapp.Run();
-        Menu menu = new Menu();
+        SocialNetwork menu = new SocialNetwork();
         menu.Run();
     }
 }
