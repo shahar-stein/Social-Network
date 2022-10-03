@@ -23,26 +23,33 @@ public class Menu
     }
     private void Login()
     {
-        cli.print("Enter your username: ");
-        String username = cli.getInputFromUser();
-        cli.print("Enter your Password: ");
-        String password = cli.getInputFromUser();
-        User user = new User(username, password);
-        if(users.containsValue(user))
-        {
-            cli.print("Welcome " + username + " :)");
-        }
-        else
-        {
-            cli.print("Try again");
+        while() {
+            cli.print("Enter your username: ");
+            String username = cli.getInputFromUser();
+            cli.print("Enter your Password: ");
+            String password = cli.getInputFromUser();
+            User user = new User(username, password);
+            if (users.containsValue(user)) {
+                cli.print("Welcome " + username + " :)");
+            } else {
+                cli.print("Try again");
+            }
         }
     }
 
-    private void PrintMenu(Map<Integer, String> indexToUser)
+    private void PrintUsersToWritePost(Map<Integer, String> indexToUser)
     {
-        cli.print("Choose your user:");
+        cli.print("Choose user to write a post on his wall:");
         PrintUsers(indexToUser);
         cli.print(users.size() + 1 + ". - Add New User");
+        cli.print("0. - EXIT");
+    }
+
+    private void PrintMenu()
+    {
+        cli.print("1. To write a post on user’s wall");
+        cli.print("2. - Add New User");
+        cli.print("3. Add a new friend :)");
         cli.print("0. - EXIT");
     }
 
@@ -74,8 +81,10 @@ public class Menu
         //Print all posts
         for (Post post : users.get(friend_user_name).getPosts())
         {
+            cli.print("The writer of the post: " + user.getUsername());
             cli.print(post.getText());
         }
+        //Print all users walls
     }
 
     private Map<Integer, String> GetIndices()
@@ -86,6 +95,11 @@ public class Menu
             result.put(count++, userEntry.getKey());
         }
         return result;
+    }
+
+    private void AddFriend()
+    {
+
     }
 
     public void Run()
@@ -99,22 +113,27 @@ public class Menu
         {
             Map<Integer, String> indexToUser = GetIndices();
 
-            PrintMenu(indexToUser);
+            Login();
+            PrintMenu();
             choice = cli.getIntInputFromUser(0, users.size() + 1);
-            if (choice >= 1 && choice <= users.size())
+            if(choice == 1)
             {
-                String index = indexToUser.get(choice);
-                User user = users.get(index);
-                HandleUser(user, indexToUser);
-            }
-            else if (choice == users.size() + 1)
-            {
-                AddUser();
-            }
-            else if (choice == 0)
-            {
-                cli.print("Exiting Program...");
-                break;
+                PrintUsersToWritePost(indexToUser);
+                if (choice >= 1 && choice <= users.size())
+                {
+                    String index = indexToUser.get(choice);
+                    User user = users.get(index);
+                    HandleUser(user, indexToUser);
+                }
+                else if (choice == users.size() + 1)
+                {
+                    AddUser();
+                }
+                else if (choice == 0)
+                {
+                    cli.print("Exiting Program...");
+                    break;
+                }
             }
         }
     }
