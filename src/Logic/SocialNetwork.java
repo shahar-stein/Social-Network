@@ -23,7 +23,8 @@ public class SocialNetwork
     }
     private User Login()
     {
-        while(true)
+        //while(true)
+        for(int i=0; i<2; i++)
         {
             cli.print("Enter your username: ");
             String username = cli.getInputFromUser();
@@ -39,6 +40,7 @@ public class SocialNetwork
                 cli.print("Try again");
             }
         }
+        return null;
     }
 
     private void PrintUsersToWritePost(Map<Integer, String> indexToUser)
@@ -50,7 +52,7 @@ public class SocialNetwork
 
     private void PrintMenu()
     {
-        cli.print("1. To write a post on user’s wall");
+        cli.print("1. To write a post on users wall");
         cli.print("2. Add New User");
         cli.print("3. Add a new friend :)");
         cli.print("4. Print all users");
@@ -58,13 +60,19 @@ public class SocialNetwork
         cli.print("0. EXIT");
     }
 
-    private void PrintAllUsersWall ()
+    private void PrintAllUsersWall (Map<Integer, String> indexToUser,User userToWriteTo )
     {
-        //שילוב של פרינט יוזרס והפור הזה: for (Post post : userToWriteTo.getPosts())
-        //        {
-        //            cli.print("The writer of the post: " + post.getWriter());
-        //            cli.print(post.getText());
-        //        }
+        for (Map.Entry<Integer, String> userEntry : indexToUser.entrySet())
+        {
+            Integer index = userEntry.getKey();
+            String username = userEntry.getValue();
+            cli.print(index + ". " + username);
+            for (Post post : userToWriteTo.getPosts())
+            {
+                cli.print("The writer of the post: " + post.getWriter());
+                cli.print(post.getText());
+            }
+        }
     }
 
     private void AddUser()
@@ -113,8 +121,8 @@ public class SocialNetwork
 
     public void Run()
     {
-        users.put("Shahar", new User("Shahar", "123456"));
-        users.put("Shay", new User("Shay", "123S"));
+        users.put("Shahar", new User("Shahar", "123"));
+        users.put("Shay", new User("Shay", "123"));
 
         cli.print("Hello and Welcome to Shahar's App !");
         int userToWriteToIndex;
@@ -155,6 +163,7 @@ public class SocialNetwork
                     PrintUsers(indexToUser);
                     break;
                 case 5:
+                    PrintAllUsersWall();
                     break;
                 case 0:
                     cli.print("Exiting Program...");
