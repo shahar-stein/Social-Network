@@ -60,14 +60,12 @@ public class SocialNetwork
         cli.print("0. EXIT");
     }
 
-    private void PrintAllUsersWall (Map<Integer, String> indexToUser,User userToWriteTo )
+    private void PrintAllUsersWall ()
     {
-        for (Map.Entry<Integer, String> userEntry : indexToUser.entrySet())
+        for (Map.Entry<String, User> userEntry : users.entrySet())
         {
-            Integer index = userEntry.getKey();
-            String username = userEntry.getValue();
-            cli.print(index + ". " + username);
-            for (Post post : userToWriteTo.getPosts())
+            cli.print("Username: " + userEntry.getKey());
+            for (Post post : userEntry.getValue().getPosts())
             {
                 cli.print("The writer of the post: " + post.getWriter());
                 cli.print(post.getText());
