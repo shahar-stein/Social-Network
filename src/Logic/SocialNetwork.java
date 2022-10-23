@@ -156,6 +156,7 @@ public class SocialNetwork
                     AddUser();
                     break;
                 case 3:
+                    AddFriend();
                     break;
                 case 4:
                     PrintUsers(indexToUser);
