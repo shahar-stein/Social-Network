@@ -9,6 +9,8 @@ import java.util.Map;
 
 public class SocialNetwork
 {
+    public static final int INDEX_TO_EXIT = 0;
+    public static final int NUMBER_OF_RETRIES = 3;
     private Map<String, User> users = new HashMap<>();
     private CommandLineInterface cli = new CommandLineInterface();
 
@@ -26,7 +28,7 @@ public class SocialNetwork
         //while(true)
         cli.print("Enter your username: ");
         String username = cli.getInputFromUser();
-        for(int i=0; i<3; i++)
+        for(int i = 0; i< NUMBER_OF_RETRIES; i++)
         {
             cli.print("Enter your Password: ");
             String password = cli.getInputFromUser();
@@ -59,6 +61,7 @@ public class SocialNetwork
         cli.print("3. Add a new friend :)");
         cli.print("4. Print all users");
         cli.print("5. Print all users wall");
+        cli.print("6. Log Out");
         cli.print("0. EXIT");
     }
 
@@ -118,6 +121,10 @@ public class SocialNetwork
     {
 
     }
+    private void LogOut()
+    {
+
+    }
 
     public void Run()
     {
@@ -148,7 +155,7 @@ public class SocialNetwork
                                 WriteAPost(loggedInUser, userToWriteTo);
                             }
 
-                            else if (userToWriteToIndex == 0)
+                            else if (userToWriteToIndex == INDEX_TO_EXIT)
                             {
                                 cli.print("Going back to main menu");
                                 break;
@@ -166,6 +173,8 @@ public class SocialNetwork
                         case 5:
                             PrintAllUsersWall();
                             break;
+                        case 6:
+                            LogOut();
                         case 0:
                             cli.print("Exiting Program...");
                             return;
