@@ -24,10 +24,10 @@ public class SocialNetwork
     private User Login()
     {
         //while(true)
-        for(int i=0; i<2; i++)
+        cli.print("Enter your username: ");
+        String username = cli.getInputFromUser();
+        for(int i=0; i<3; i++)
         {
-            cli.print("Enter your username: ");
-            String username = cli.getInputFromUser();
             cli.print("Enter your Password: ");
             String password = cli.getInputFromUser();
             if (users.containsKey(username) && users.get(username).getPassword().equals(password))
@@ -37,9 +37,10 @@ public class SocialNetwork
             }
             else
             {
-                cli.print("Try again");
+                cli.print("Attempt number " + String.valueOf(i+1) + " Failed. Please try again");
             }
         }
+        cli.print("Failed 3 times. Exit program...");
         return null;
     }
 
@@ -52,6 +53,7 @@ public class SocialNetwork
 
     private void PrintMenu()
     {
+        cli.print("Main Menu:");
         cli.print("1. To write a post on users wall");
         cli.print("2. Add New User");
         cli.print("3. Add a new friend :)");
@@ -129,45 +131,48 @@ public class SocialNetwork
             Map<Integer, String> indexToUser = GetIndices();
 
             User loggedInUser = Login();
-            PrintMenu();
-            int menuSelection = cli.getIntInputFromUser(0, 5);
-            switch (menuSelection)
+            if(loggedInUser != null)
             {
-                case 1:
-                    PrintUsersToWritePost(indexToUser);
-                    userToWriteToIndex = cli.getIntInputFromUser(0, users.size());
-                    if(userToWriteToIndex == 1)
+                while (true)
+                {
+                    PrintMenu();
+                    int menuSelection = cli.getIntInputFromUser(0, 5);
+                    switch (menuSelection)
                     {
-                        PrintUsersToWritePost(indexToUser);
-                        if (userToWriteToIndex >= 1 && userToWriteToIndex <= users.size())
-                        {
-                            User userToWriteTo = users.get(indexToUser.get(userToWriteToIndex));
-                            WriteAPost(loggedInUser, userToWriteTo);
-                        }
+                        case 1:
+                            PrintUsersToWritePost(indexToUser);
+                            userToWriteToIndex = cli.getIntInputFromUser(0, users.size());
+                            if (userToWriteToIndex >= 1 && userToWriteToIndex <= users.size())
+                            {
+                                User userToWriteTo = users.get(indexToUser.get(userToWriteToIndex));
+                                WriteAPost(loggedInUser, userToWriteTo);
+                            }
 
-                        else if (userToWriteToIndex == 0)
-                        {
-                            cli.print("Going back to main menu");
+                            else if (userToWriteToIndex == 0)
+                            {
+                                cli.print("Going back to main menu");
+                                break;
+                            }
                             break;
-                        }
+                        case 2:
+                            AddUser();
+                            break;
+                        case 3:
+                            AddFriend();
+                            break;
+                        case 4:
+                            PrintUsers(indexToUser);
+                            break;
+                        case 5:
+                            PrintAllUsersWall();
+                            break;
+                        case 0:
+                            cli.print("Exiting Program...");
+                            return;
                     }
-                    break;
-                case 2:
-                    AddUser();
-                    break;
-                case 3:
-                    AddFriend();
-                    break;
-                case 4:
-                    PrintUsers(indexToUser);
-                    break;
-                case 5:
-                    PrintAllUsersWall();
-                    break;
-                case 0:
-                    cli.print("Exiting Program...");
-                    return;
+                }
             }
+
         }
     }
 }
