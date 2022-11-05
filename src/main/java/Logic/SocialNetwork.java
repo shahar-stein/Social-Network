@@ -4,8 +4,16 @@ import Data.Post;
 import Data.User;
 import UI.CommandLineInterface;
 
+
+import java.io.*;
 import java.util.HashMap;
 import java.util.Map;
+
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
 
 public class SocialNetwork
 {
@@ -126,11 +134,44 @@ public class SocialNetwork
 
     }
 
+    private void saveData()
+    {
+        Gson gson = new Gson();
+        try {
+            Writer writer = new FileWriter("./DataFiles.json");
+            gson.toJson(users, writer);
+            writer.flush();
+            writer.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void loadData()
+    {
+        Gson gson = new Gson();
+
+        try (Reader reader = new FileReader("./DataFiles.json")) {
+
+            // Convert JSON File to Java Object
+            JsonElement temp = gson.fromJson(reader, JsonElement.class);
+
+            // print staff object
+            System.out.println(users);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+
+    }
+
     public void Run()
     {
-        users.put("Shahar", new User("Shahar", "123"));
-        users.put("Shay", new User("Shay", "123"));
+//        users.put("Shahar", new User("Shahar", "123"));
+//        users.put("Shay", new User("Shay", "123"));
 
+        loadData();
         cli.print("Hello and Welcome to Shahar's App !");
         int userToWriteToIndex;
         while (true)
@@ -177,6 +218,7 @@ public class SocialNetwork
                             LogOut();
                         case 0:
                             cli.print("Exiting Program...");
+                            saveData();
                             return;
                     }
                 }
