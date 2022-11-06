@@ -2,6 +2,7 @@ package Logic;
 
 import Data.Post;
 import Data.User;
+import Data.UsersData;
 import UI.CommandLineInterface;
 
 
@@ -19,7 +20,7 @@ public class SocialNetwork
 {
     public static final int INDEX_TO_EXIT = 0;
     public static final int NUMBER_OF_RETRIES = 3;
-    private Map<String, User> users = new HashMap<>();
+    private UsersData users = new UsersData();
     private CommandLineInterface cli = new CommandLineInterface();
 
     public void PrintUsers(Map<Integer, String> indexToUser)
@@ -40,10 +41,10 @@ public class SocialNetwork
         {
             cli.print("Enter your Password: ");
             String password = cli.getInputFromUser();
-            if (users.containsKey(username) && users.get(username).getPassword().equals(password))
+            if (users.getUsers().containsKey(username) && users.getUsers().get(username).getPassword().equals(password))
             {
                 cli.print("Welcome " + username + " :)");
-                return users.get(username);
+                return users.getUsers().get(username);
             }
             else
             {
@@ -75,7 +76,7 @@ public class SocialNetwork
 
     private void PrintAllUsersWall ()
     {
-        for (Map.Entry<String, User> userEntry : users.entrySet())
+        for (Map.Entry<String, User> userEntry : users.getUsers().entrySet())
         {
             cli.print("Username: " + userEntry.getKey());
             for (Post post : userEntry.getValue().getPosts())
@@ -92,9 +93,9 @@ public class SocialNetwork
         String username = cli.getInputFromUser();
         cli.print("Enter password: ");
         String password = cli.getInputFromUser();
-        if (!users.containsKey(username))
+        if (!users.getUsers().containsKey(username))
         {
-            users.put(username, new User(username, password));
+            users.getUsers().put(username, new User(username, password));
         }
         else
         {
@@ -119,7 +120,7 @@ public class SocialNetwork
     {
         Map<Integer, String> result = new HashMap<>();
         int count = 1;
-        for (Map.Entry<String, User> userEntry : users.entrySet()) {
+        for (Map.Entry<String, User> userEntry : users.getUsers().entrySet()) {
             result.put(count++, userEntry.getKey());
         }
         return result;
@@ -154,7 +155,7 @@ public class SocialNetwork
         try (Reader reader = new FileReader("./DataFiles.json")) {
 
             // Convert JSON File to Java Object
-            JsonElement temp = gson.fromJson(reader, JsonElement.class);
+            users = gson.fromJson(reader,UsersData.class);
 
             // print staff object
             System.out.println(users);
@@ -168,10 +169,10 @@ public class SocialNetwork
 
     public void Run()
     {
-//        users.put("Shahar", new User("Shahar", "123"));
 //        users.put("Shay", new User("Shay", "123"));
 
         loadData();
+        users.getUsers().put("Admin", new User("Admin", "123"));
         cli.print("Hello and Welcome to Shahar's App !");
         int userToWriteToIndex;
         while (true)
@@ -189,10 +190,10 @@ public class SocialNetwork
                     {
                         case 1:
                             PrintUsersToWritePost(indexToUser);
-                            userToWriteToIndex = cli.getIntInputFromUser(0, users.size());
-                            if (userToWriteToIndex >= 1 && userToWriteToIndex <= users.size())
+                            userToWriteToIndex = cli.getIntInputFromUser(0, users.getUsers().size());
+                            if (userToWriteToIndex >= 1 && userToWriteToIndex <= users.getUsers().size())
                             {
-                                User userToWriteTo = users.get(indexToUser.get(userToWriteToIndex));
+                                User userToWriteTo = users.getUsers().get(indexToUser.get(userToWriteToIndex));
                                 WriteAPost(loggedInUser, userToWriteTo);
                             }
 
